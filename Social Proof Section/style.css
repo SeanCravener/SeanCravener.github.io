@@ -55,7 +55,7 @@ html, body {
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 /* A elements that don't have a class get default styles */
@@ -141,7 +141,7 @@ picture, svg {
     font-weight: var(--fw-bold);
 }
 
-.fs-primary-heading {
+.fs-heading {
     font-size: var(--fs-primary-heading);
 }
 
@@ -154,19 +154,41 @@ picture, svg {
 }
 
 /* Mobile (main) */
-.container {
-    padding: 1rem 1rem;
-    text-align:center;
+.center-text {
+    text-align: center;
 }
 
-.sub-container {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.h3-margins {
+    padding: 1rem 4rem;
 }
 
-h3 {
-    padding: 0 2rem 1rem 2rem;
-    line-height: .85;
+.item-margin {
+    margin: 0.25rem;
+}
+
+.item-padding {
+    padding: 0.75rem;
+}
+
+.star-rating {
+    background-image: url(images/icon-star.svg);
+    display: inline-block;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ratings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    text-align: center;
 }
 
 /* Desktop */
