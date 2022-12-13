@@ -1,60 +1,49 @@
 import React, { useState } from "react";
-import { Modal, TaskBar, List } from '@react95/core';
-import { ReaderClosed, WindowsExplorer } from '@react95/icons'
-import '@react95/icons/icons.css';
+import { useEffect } from "react";
+
+// TODO
+// Need to add draggable package for window iframes
 
 const App = () => {
-  const [first, toggleFirst] = useState(false);
-  const [second, toggleSecond] = useState(false);
+  const [toggle, setToggle] = useState(true)
 
-  const closeFirst = () => toggleFirst(false);
-  const closeSecond = () => toggleSecond(false);
+  const toggleModal = () => {
+    if (toggle) {
+      setToggle(false)
+    } else {
+      setToggle(true)
+    }
+    return
+  }
+
+  useEffect(() => {
+    if(!toggle) {
+      document.getElementById('123').remove()
+      return
+    } else {
+      return
+    }
+  }, [toggle])
 
   return (
-    <>
-      {first && (
-        <Modal
-          icon={<WindowsExplorer variant="16x16_4" />}
-          title="Windows Explorer"
-          closeModal={closeFirst}
-          width="300"
-          height="200"
-        />
-      )}
-
-      {second && (
-        <Modal
-          defaultPosition={{ x: 50, y: 50 }}
-          width="300"
-          height="200"
-          icon={<ReaderClosed variant="16x16_4" />}
-          title="Local Disk (C:)"
-          closeModal={closeSecond}
-        />
-      )}
-
-      <TaskBar
-        list={
-          <List>
-            <List.Item
-              icon={<ReaderClosed variant="32x32_4" />}
-              onClick={() => toggleSecond(true)}
-            >
-              Local Disk (C:)
-            </List.Item>
-            <List.Item
-              icon={<WindowsExplorer variant="32x32_4" />}
-              onClick={() => {
-                toggleFirst(true);
-              }}
-            >
-              Windows Explorer
-            </List.Item>
-          </List>
-        }
-      />
-    </>
+    <div className='App'>
+      <button className='btn btn-primary' type='button' onClick={() => toggleModal()}>Show/Hide</button>
+      <Window />
+      {/* <Desktop />
+      <Taskbar />   */}
+    </div>
   );
+}
+
+const Window = () => {
+
+  return (
+      <div className='window'>
+        <iframe src='Projects\Frontend-Mentor-Challenges\lvl1-single-price-grid\index.html' width='300' height='300' id='123'></iframe>
+          {/* <Toolbar />
+          <WindowDisplay /> */}
+      </div>
+  )
 }
 
 export default App
